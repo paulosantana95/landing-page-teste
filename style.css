@@ -14,7 +14,7 @@ a {
 
 /*====== VARIABLES =====*/
 :root {
-/***COLORS***/
+    /***COLORS***/
     
     /* primary */
     --red: hsl(0, 100%, 74%);
@@ -31,7 +31,7 @@ a {
     --font-poppins: 'Poppins', sans-serif;
 }
 
-/* Código tailwind para esconder o label na tela, mas ainda assim aparecer nos motores de buscas */
+/* tailwind code for hidden labels */
 .sr-only {
     position: absolute;
     height: 1px;
@@ -59,6 +59,11 @@ body {
     display: grid;
 }
 
+.text-area {
+    max-width: 32.8rem;
+    max-height: 13.75rem;
+}
+
 .title {
     font: 700 1.75rem var(--font-poppins);
     color: #FFFFFF;
@@ -78,10 +83,9 @@ body {
 }
 
 /*====== LAYOUT ======*/
-
 main {
     margin-top: 5.5rem;
-    padding-bottom: 4.25rem
+    margin-bottom: 4.25rem;
 }
 
 section {
@@ -89,9 +93,10 @@ section {
     margin-right: auto;
 }
 
-section .container {
+section .content {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
+    overflow: hidden;
 }
 
 h1.title {
@@ -100,16 +105,18 @@ h1.title {
 
 
 /*======== FORM-AREA ========*/
+
 .form-area {
+    width: 100%;
+    max-width: 33.75rem;
     margin-top: 4rem;
+}
+
+.title-form-area {
     margin-bottom: 1.5rem;
 }
 
-.form-area .title-form {
-    align-items: center;
-}
-
-.form-area .title-form a.button {
+.title-form-area .title-form a.button {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -126,7 +133,7 @@ h1.title {
     margin-bottom: 1.5rem;
 }
 
-.form-area .title-form a.button p {
+.title-form-area .title-form a.button p {
     text-align: center;
 
     padding: 1.125rem 4.125rem;
@@ -134,13 +141,16 @@ h1.title {
 
 /* form */
 
-
 .input-area {
     background: #FFFFFF;
-    
+
+    width: 100%;
+
+    max-height: 29.625rem;
+
     border-radius: 0.625rem;
     
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem;
 }
 
 .input-area form {
@@ -185,7 +195,7 @@ input:focus {
     transition: filter 0.2s;
 }
 
-.input-area form button:hover {
+.input-area form button:hover, a:hover {
     filter: brightness(1.2);
 }
 
@@ -209,3 +219,49 @@ input:focus {
 
 
 
+@media (min-width: 992px) {
+    
+    main { 
+        margin: 0 auto;
+    }
+        
+    section div.content {
+        grid-auto-flow: column;
+        justify-content: space-evenly;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .text-area {
+        margin-top: 18.125rem;
+        margin-left: 10.3rem;
+        margin-right: 2.5625rem;
+    }
+    
+    .text-area h1.title {
+        text-align: left;
+        font-size: 3.1rem;
+        line-height: 3.4rem;
+        margin-bottom: 0.687rem;
+    }
+
+    .text-area .subtitle {
+        text-align: left;
+        font-size: 1rem;
+        line-height: 1.6rem;
+    }
+
+    .form-area {
+        margin-right: 10.3rem;
+        margin-top: 7.56rem;
+    }
+
+    .input-area {
+        padding: 2.5rem 2.5rem;
+    }
+
+    .input-area form {
+        gap: 1.25rem;
+    }
+
+}

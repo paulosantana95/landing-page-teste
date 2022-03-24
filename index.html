@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
+    <!-- icons -->
+    <link rel="stylesheet" href="assets/icons/style.css">
+
     <!-- style css -->
     <link rel="stylesheet" href="style.css">
 
@@ -17,46 +20,51 @@
 </head>
 <body>
     <main>
-        <section>
-            <div class="container">
-                <div class="text">
+        <section class="grid">
+            <div class="content grid">
+                <div class="text-area grid">
                     <h1 class="title">Learn to code by watching others</h1>
                     <p class="subtitle">
                         See how experienced developers solve problems in real-time. Watching scripted tutorials is great, but understanding how developers think is invaluable.
                     </p>
                 </div>
 
-                <div id="form-area" class="form-area">
-                    <div class="title-form grid">
-                        <a href="#" class="button">
-                            <p><span class="bold">Try it free 7 days </span> then
-                                $20/mo. thereafter</p>
-                        </a>
-                    </div>
 
-                    <div id="input-area" class="input-area">
-                        <form action="">
-                            <label class="sr-only" for="first-name">First Name</label>
-                            <input type="text" id="first-name" placeholder="First Name" required>
+                <div class="form-area grid">
+                    <div id="title-form-area" class="title-form-area">
+                        <div class="title-form grid">
+                            <a href="#" class="button">
+                                <p><span class="bold">Try it free 7 days </span> then
+                                    $20/mo. thereafter</p>
+                            </a>
+                        </div>
 
-                            <label class="sr-only" for="last-name">Last Name</label>
-                            <input type="text" id="last-name" placeholder="Last Name" required>
+                        <div id="input-area" class="input-area">
+                            <form action="">
+                                <label class="sr-only" for="first-name">First Name</label>
+                                <input type="text" id="first-name" placeholder="First Name" required>
 
-                            <label class="sr-only" for="email-adress">Email Adress</label>
-                            <input type="email" id="email-adress" placeholder="Email Adress" required>
+                                <label class="sr-only" for="last-name">Last Name</label>
+                                <input type="text" id="last-name" placeholder="Last Name" required>
 
-                            <label class="sr-only" for="password">Password</label>
-                            <input type="password" id="password" placeholder="Password" required>
+                                <label class="sr-only" for="email-adress">Email Adress</label>
+                                <input type="email" id="email-adress" placeholder="Email Adress" required>
 
-                            <button>CLAIM YOUR FREE TRIAL</button>
-                            
-                            <footer>
-                                <p>
-                                    By clicking the button, you are agreeing to our <a href="">Terms and Services 
-                                    </a> 
-                                </p>
-                            </footer>
-                        </form>
+                                <label class="sr-only" for="password">Password</label>
+                                <input type="password" id="password" placeholder="Password" required>
+
+                                <button>CLAIM YOUR FREE TRIAL</button>
+                                
+                                <footer>
+                                    <p>
+                                        By clicking the button, you are agreeing to our <a href="">Terms and Services 
+                                        </a> 
+                                    </p>
+                                </footer>
+
+                            </form>
+                        </div>
+
                     </div>
                 </div>
 
