@@ -1,50 +1,63 @@
 const fields = document.querySelectorAll("[required]")
 
-// console.log(field)
-
-
-function customValidation(event) {
-    const field = event.target
-
-
-    //verify error
-
+function validateField(field) {
+    //logica de verificação de erros.
     function verifyErrors() {
         let foundError = false;
 
-
         for( const error in field.validity) {
             
-            if (error != "customError" && field.validity[error]) {
+            if (field.validity[error] && !field.validity.valid) {
                 foundError = error
             }
         } 
-
         return foundError;
     }
-    
 
-    const error = verifyErrors();
-    console.log(error)
+    const spanError = field.parentNode.querySelectorAll("span.error");
+    const inputError = field.parentNode.querySelectorAll("input");
 
-
-    if (error) {
-        // switch message required
-        field.setCustomValidity("Esse campo é obrigatório")
-    } else {
-        field.setCustomValidity("")
+    function setCustomError() {
+        
+            spanError.classList.add("active")
+            inputError.classList.add("input-error")
     }
+    function removeCustomError() {
+        spanError.classList.remove("active")
+        inputError.classList.remove("input-error")
+    }
+        
 
+    return function() {
+        if(verifyErrors()) {
+            setCustomError();
     
+        } else {
+            removeCustomError();
+        }
+    }
 }
 
+
+function customValidation(event) {
+    const field = event.target;
+    //verify error
+    const validation = validateField(field);
+
+
+    validation();
+}
 
 for ( field of fields ) {
-    field.addEventListener("invalid", customValidation)
+    field.addEventListener("invalid", event => {
+        //eliminar bubble
+        event.preventDefault();
+
+        customValidation(event);
+    })
+    field.addEventListener("blur", customValidation)
 
 }
-
-
 
 document.querySelector("form").addEventListener("submit", event => {
     console.log('enviar formulário')
