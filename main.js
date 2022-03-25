@@ -1,4 +1,5 @@
-const fields = document.querySelectorAll("[required]")
+function submitFormAndVerify() {
+    const fields = document.querySelectorAll("[required]")
 
 
 //Validate Form Fields function
@@ -18,19 +19,19 @@ function validateField(field) {
 
     // node select
     const spanError = field.parentNode.querySelector("span");
-    const inputError = field
+    const inputError = field;
 
     //Error atribute
     function setCustomError() {
-        field.parentNode.classList.add("error")
-        spanError.classList.add("error")
-        inputError.classList.add("input-error")
+        field.parentNode.classList.add("error");
+        spanError.classList.add("error");
+        inputError.classList.add("input-error");
     }
     //Remove error atribute
     function removeCustomError() {
-        field.parentNode.classList.remove("error")
-        spanError.classList.remove("error")
-        inputError.classList.remove("input-error")
+        field.parentNode.classList.remove("error");
+        spanError.classList.remove("error");
+        inputError.classList.remove("input-error");
     }
         
     //function return for control atributes error.
@@ -54,16 +55,27 @@ function customValidation(event) {
 }
 
 
+for ( field of fields ) {
+    field.addEventListener("invalid", event => {
+        event.preventDefault();
+
+        customValidation(event);
+    })
+    field.addEventListener("blur", customValidation);
+
+}
+
 //Validate Form Function
 function sendValidateForm() {
     const form = document.querySelector("form");
     const message = document.querySelector(".success-submit")
 
-    form.style.display= "none"
-    message.style.display = "block"
+    form.style.display= "none";
+    message.style.display = "block";
 }
 
 //arrow function for submit control.
+
 document.querySelector("form").addEventListener("submit", event => {
     console.log('success submit');
 
@@ -71,3 +83,8 @@ document.querySelector("form").addEventListener("submit", event => {
 
     sendValidateForm();
 })
+
+
+}
+
+
