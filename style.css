@@ -140,17 +140,22 @@ h1.title {
 }
 
 /* form */
-
 .input-area {
     background: #FFFFFF;
 
     width: 100%;
-
-    max-height: 29.625rem;
+    height: 100%;
+    
+    min-height: 29.625rem;
+    max-height: 35.125;
 
     border-radius: 0.625rem;
     
     padding: 1.5rem 1.5rem;
+}
+
+.input-area .success-submit {
+    display: none;
 }
 
 .input-area form {
@@ -227,22 +232,41 @@ input.input-error {
     outline: none;
 }
 
-span.error {
+div.error {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+div.error::before {
+    content: url('assets/error-icon.svg');
+    position: absolute;
+    right: 1.68rem;
+    top: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--red);
+    color: #FFFFFF;
+}
+
+form div span {
+    display: none;
     font: 500 0.68rem var(--font-poppins);
     color: var(--red);
     font-style: italic;
-    text-align: right;
+    transition: ease-in 0.2s;
+}
+
+
+span.error {
+    display: flex;
+    justify-content: flex-end;
     line-height: 0;
+    margin-top: 1rem;
 
-    display: none;
-    opacity: 0;
+    transition: ease-in 0.2s;
 }
-
-span.error.active {
-    display: block;
-    opacity: 1;
-}
-
 
 
 @media (min-width: 992px) {

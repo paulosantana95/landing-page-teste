@@ -1,33 +1,39 @@
 const fields = document.querySelectorAll("[required]")
 
+
+//Validate Form Fields function
 function validateField(field) {
-    //logica de verificação de erros.
+    //Verify Error
     function verifyErrors() {
         let foundError = false;
 
         for( const error in field.validity) {
             
-            if (field.validity[error] && !field.validity.valid) {
+            if (field.validity[error]) {
                 foundError = error
             }
         } 
         return foundError;
     }
 
-    const spanError = field.parentNode.querySelectorAll("span.error");
-    const inputError = field.parentNode.querySelectorAll("input");
+    // node select
+    const spanError = field.parentNode.querySelector("span");
+    const inputError = field
 
+    //Error atribute
     function setCustomError() {
-        
-            spanError.classList.add("active")
-            inputError.classList.add("input-error")
+        field.parentNode.classList.add("error")
+        spanError.classList.add("error")
+        inputError.classList.add("input-error")
     }
+    //Remove error atribute
     function removeCustomError() {
-        spanError.classList.remove("active")
+        field.parentNode.classList.remove("error")
+        spanError.classList.remove("error")
         inputError.classList.remove("input-error")
     }
         
-
+    //function return for control atributes error.
     return function() {
         if(verifyErrors()) {
             setCustomError();
@@ -39,18 +45,17 @@ function validateField(field) {
 }
 
 
+//Custom Validate Function
 function customValidation(event) {
     const field = event.target;
-    //verify error
-    const validation = validateField(field);
 
+    const validation = validateField(field);
 
     validation();
 }
 
 for ( field of fields ) {
     field.addEventListener("invalid", event => {
-        //eliminar bubble
         event.preventDefault();
 
         customValidation(event);
@@ -59,10 +64,22 @@ for ( field of fields ) {
 
 }
 
-document.querySelector("form").addEventListener("submit", event => {
-    console.log('enviar formulário')
+//Validate Form Function
+function sendValidateForm() {
+    const form = document.querySelector("form");
+    const message = document.querySelector(".success-submit")
+    
+    form.preventDefault();
 
+    message.style.display = "block"
+    form.style.display= "none"
+}
+
+//arrow function for submit control.
+document.querySelector("form").addEventListener("submit", event => {
+    console.log('enviar formulário');
 
     event.preventDefault();
 
+    sendValidateForm();
 })
