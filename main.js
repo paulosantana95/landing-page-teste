@@ -9,8 +9,8 @@ function validateField(field) {
 
         for( const error in field.validity) {
             
-            if (field.validity[error]) {
-                foundError = error
+            if (field.validity[error] && !field.validity.valid) {
+                foundError = error;
             }
         } 
         return foundError;
@@ -37,7 +37,6 @@ function validateField(field) {
     return function() {
         if(verifyErrors()) {
             setCustomError();
-    
         } else {
             removeCustomError();
         }
@@ -54,30 +53,19 @@ function customValidation(event) {
     validation();
 }
 
-for ( field of fields ) {
-    field.addEventListener("invalid", event => {
-        event.preventDefault();
-
-        customValidation(event);
-    })
-    field.addEventListener("blur", customValidation)
-
-}
 
 //Validate Form Function
 function sendValidateForm() {
     const form = document.querySelector("form");
     const message = document.querySelector(".success-submit")
-    
-    form.preventDefault();
 
-    message.style.display = "block"
     form.style.display= "none"
+    message.style.display = "block"
 }
 
 //arrow function for submit control.
 document.querySelector("form").addEventListener("submit", event => {
-    console.log('enviar formulário');
+    console.log('success submit');
 
     event.preventDefault();
 
