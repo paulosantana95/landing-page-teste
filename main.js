@@ -1,5 +1,5 @@
 function submitFormAndVerify() {
-    const fields = document.querySelectorAll("[required]")
+    const fields = document.querySelectorAll("[required]");
 
 
 //Validate Form Fields function
@@ -65,23 +65,12 @@ for ( field of fields ) {
 
 }
 
-//Validate Form Function
-function sendValidateForm() {
-    const form = document.querySelector("form");
-    const message = document.querySelector(".success-submit")
-
-    form.style.display= "none";
-    message.style.display = "block";
-}
-
 //arrow function for submit control.
-
 document.querySelector("form").addEventListener("submit", event => {
     console.log('success submit');
 
     event.preventDefault();
 
-    sendValidateForm();
 })
 
 
